@@ -34,6 +34,7 @@ class HomeController extends Controller
             ->setDbName(env('DB_DATABASE'))
             ->setUserName(env('DB_USERNAME'))
             ->setPassword(env('DB_PASSWORD'))
+            ->includeTables(['kanban_columns', 'cards'])
             ->dumpToFile('dump.sql');
 
         return redirect()->to('/dump.sql');
