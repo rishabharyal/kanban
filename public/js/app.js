@@ -23505,7 +23505,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "kanban" },
+    { staticClass: "kb" },
     [
       _c(
         "button",
@@ -23516,7 +23516,7 @@ var render = function() {
       _c(
         "draggable",
         {
-          staticClass: "kanban__kanban-container",
+          staticClass: "kb__kb-container",
           attrs: { draggable: "" },
           model: {
             value: _vm.columns,
@@ -23532,7 +23532,7 @@ var render = function() {
               "div",
               {
                 key: "column_" + key,
-                staticClass: "kanban__kanban-container__kanban-column",
+                staticClass: "kb__kb-container__kb-column",
                 on: {
                   drop: function($event) {
                     return _vm.handleDrop(key)
@@ -23543,8 +23543,7 @@ var render = function() {
                 _c(
                   "div",
                   {
-                    staticClass:
-                      "kanban__kanban-container__kanban-column__kanban-column-header"
+                    staticClass: "kb__kb-container__kb-column__kb-column-header"
                   },
                   [
                     _vm._v(
@@ -23556,7 +23555,7 @@ var render = function() {
                       "button",
                       {
                         staticClass:
-                          "kanban__kanban-container__kanban-column__kanban-column-header__btn",
+                          "kb__kb-container__kb-column__kb-column-header__btn",
                         on: {
                           click: function($event) {
                             return _vm.removeColumn(column.id)
@@ -23571,8 +23570,7 @@ var render = function() {
                 _c(
                   "draggable",
                   {
-                    staticClass:
-                      "kanban__kanban-container__kanban-column__kanban-column-list",
+                    staticClass: "kb__kb-container__kb-column__kb-column-list",
                     attrs: {
                       list: column.cards,
                       group: { name: "row" },
@@ -23660,53 +23658,46 @@ var render = function() {
             )
           }),
           _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "kanban__kanban-container__kanban-column" },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "kanban__kanban-container__kanban-column__kanban-column-header"
-                },
-                [
-                  _vm._v("\n                Add New Column\n                "),
-                  _c("br"),
-                  _c("br"),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.columnName,
-                        expression: "columnName"
-                      }
-                    ],
-                    staticStyle: { padding: "10px", width: "80%" },
-                    attrs: { type: "text", placeholder: "Column Title" },
-                    domProps: { value: _vm.columnName },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.columnName = $event.target.value
-                      }
+          _c("div", { staticClass: "kb__kb-container__kb-column" }, [
+            _c(
+              "div",
+              { staticClass: "kb__kb-container__kb-column__kb-column-header" },
+              [
+                _vm._v("\n                Add New Column\n                "),
+                _c("br"),
+                _c("br"),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.columnName,
+                      expression: "columnName"
                     }
-                  }),
-                  _vm._v(" "),
-                  _c("br"),
-                  _c("br"),
-                  _vm._v(" "),
-                  _c("button", { on: { click: _vm.addColumn } }, [
-                    _vm._v("➕ Add")
-                  ])
-                ]
-              )
-            ]
-          )
+                  ],
+                  staticStyle: { padding: "10px", width: "80%" },
+                  attrs: { type: "text", placeholder: "Column Title" },
+                  domProps: { value: _vm.columnName },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.columnName = $event.target.value
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c("br"),
+                _c("br"),
+                _vm._v(" "),
+                _c("button", { on: { click: _vm.addColumn } }, [
+                  _vm._v("➕ Add")
+                ])
+              ]
+            )
+          ])
         ],
         2
       ),

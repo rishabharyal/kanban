@@ -1,15 +1,15 @@
 <template>
-    <div class="kanban">
+    <div class="kb">
         <button class="button--float" @click="downloadDump">
             ⬇️
         </button>
-        <draggable v-model="columns" class="kanban__kanban-container" draggable="">
-            <div v-for="(column, key) in columns" :key="'column_' + key" @drop="handleDrop(key)" class="kanban__kanban-container__kanban-column">
-                <div class="kanban__kanban-container__kanban-column__kanban-column-header">
+        <draggable v-model="columns" class="kb__kb-container" draggable="">
+            <div v-for="(column, key) in columns" :key="'column_' + key" @drop="handleDrop(key)" class="kb__kb-container__kb-column">
+                <div class="kb__kb-container__kb-column__kb-column-header">
                     {{ column.title }}
-                    <button class="kanban__kanban-container__kanban-column__kanban-column-header__btn" @click="removeColumn(column.id)">❌</button>
+                    <button class="kb__kb-container__kb-column__kb-column-header__btn" @click="removeColumn(column.id)">❌</button>
                 </div>
-                <draggable :list="column.cards" @start="dragBegan(key)" :group="{ name: 'row' }" draggable=".card" class="kanban__kanban-container__kanban-column__kanban-column-list">
+                <draggable :list="column.cards" @start="dragBegan(key)" :group="{ name: 'row' }" draggable=".card" class="kb__kb-container__kb-column__kb-column-list">
                     <div v-for="(card, cardKey) in column.cards" @dragend="cardDragEnded(card)" :key="'card_' + card.id" @click="showCard(key, cardKey)" class="card" v-text="card.title">Create Data</div>
                 </draggable>
                 <div>
@@ -18,8 +18,8 @@
                     </div>
                 </div>
             </div>
-            <div class="kanban__kanban-container__kanban-column">
-                <div class="kanban__kanban-container__kanban-column__kanban-column-header">
+            <div class="kb__kb-container__kb-column">
+                <div class="kb__kb-container__kb-column__kb-column-header">
                     Add New Column
                     <br><br>
                     <input v-model="columnName" style="padding: 10px; width: 80%" type="text" placeholder="Column Title">

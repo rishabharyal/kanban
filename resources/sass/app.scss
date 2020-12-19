@@ -43,8 +43,8 @@ body {
     padding-left: 1rem;
 }
 
-// Considering .kanban as block...
-.kanban {
+// Considering .kb as block...
+.kb {
     display: flex;
     flex: 1 1 auto;
     overflow: auto;
@@ -62,13 +62,13 @@ input, textarea {
     outline: none;
 }
 
-.kanban__kanban-container {
+.kb__kb-container {
     display: flex;
     flex-direction: row;
     padding: 10px 0 10px 10px;
 }
 
-.kanban__kanban-container__kanban-column {
+.kb__kb-container__kb-column {
     display: flex;
     flex-direction: column;
     margin-right: 10px;
@@ -79,7 +79,7 @@ input, textarea {
     background-color: #1abc9c;
 }
 
-.kanban__kanban-container__kanban-column__kanban-column-header {
+.kb__kb-container__kb-column__kb-column-header {
     padding: 1rem;
     font-weight: bold;
     text-align: center;
@@ -89,7 +89,7 @@ input, textarea {
     font-size: 1rem;
 }
 
-.kanban__kanban-container__kanban-column__kanban-column-header__btn {
+.kb__kb-container__kb-column__kb-column-header__btn {
     display: inline-block;
     float: right;
     clear: both;
@@ -102,15 +102,15 @@ input, textarea {
 }
 
 
-.kanban__kanban-container__kanban-column__kanban-column-header__btn:hover {
+.kb__kb-container__kb-column__kb-column-header__btn:hover {
     background: rgba(0,0,0,0.2);
 }
 
-.kanban__kanban-container__kanban-column__kanban-column-header__btn:active {
+.kb__kb-container__kb-column__kb-column-header__btn:active {
     background: rgba(0,0,0,0.3);
 }
 
-.kanban__kanban-container__kanban-column__kanban-column-list {
+.kb__kb-container__kb-column__kb-column-list {
     display: flex;
     flex-direction: column;
     flex: 1;
