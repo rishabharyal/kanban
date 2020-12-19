@@ -201,6 +201,10 @@ textarea {
   color: white;
 }
 
+.form {
+  display: inline;
+}
+
 a {
   padding: 10px;
   color: #000;

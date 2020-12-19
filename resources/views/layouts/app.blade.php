@@ -22,7 +22,15 @@
 <body>
     <div class="app" id="app">
         <nav class="app__nav">
-            <h1>Kanban Board <a href="/logout">Logout</a></h1>
+            <h1>
+                Kanban Board
+                @auth
+                    <form action="/logout" method="post" class="form">
+                        @csrf
+                        <button class="button button--warn button--inline">Logout</button>
+                    </form>
+                @endauth
+            </h1>
         </nav>
 
         @yield('content')
