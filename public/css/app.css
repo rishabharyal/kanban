@@ -192,6 +192,15 @@ textarea {
   width: 25%;
 }
 
+.button--mr {
+  margin-right: 5px;
+}
+
+.button--warn {
+  background: goldenrod;
+  color: white;
+}
+
 a {
   padding: 10px;
   color: #000;

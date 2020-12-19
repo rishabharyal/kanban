@@ -39,6 +39,7 @@
                     </div>
                     <div class="auth-form__input-group auth-form__input-group--button">
                         <button class="button button--quarter" @click="updateCard">Update</button>
+                        <button class="button button--quarter button--mr button--warn" @click="$modal.hide('card-modal');">Hide</button>
                     </div>
                 </form>
             </div>
@@ -134,13 +135,14 @@
             },
             showCard(key, cardKey) {
                 let clickedCard = this.columns[key].cards[cardKey];
-                this.card.id = clickedCard.id;
-                this.card.title = clickedCard.title;
-                this.card.kanban_column_id = clickedCard.kanban_column_id;
-                this.card.description = clickedCard.description;
-                this.card.columnKey = key;
-                this.card.cardKey = cardKey;
-                this.$forceUpdate();
+                let card = {};
+                card.id = clickedCard.id;
+                card.title = clickedCard.title;
+                card.kanban_column_id = clickedCard.kanban_column_id;
+                card.description = clickedCard.description;
+                card.columnKey = key;
+                card.cardKey = cardKey;
+                this.card = card;
                 this.$modal.show('card-modal');
             },
             updateCard() {
@@ -153,6 +155,7 @@
                     description: this.card.description,
                     column_id: this.card.kanban_column_id
                 }).then(response => {
+                    this.$modal.hide('card-modal');
                     alert(response.data);
                 });
                 let columns = this.columns;

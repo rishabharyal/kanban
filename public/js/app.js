@@ -1958,6 +1958,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
@@ -2051,16 +2052,19 @@ __webpack_require__.r(__webpack_exports__);
     },
     showCard: function showCard(key, cardKey) {
       var clickedCard = this.columns[key].cards[cardKey];
-      this.card.id = clickedCard.id;
-      this.card.title = clickedCard.title;
-      this.card.kanban_column_id = clickedCard.kanban_column_id;
-      this.card.description = clickedCard.description;
-      this.card.columnKey = key;
-      this.card.cardKey = cardKey;
-      this.$forceUpdate();
+      var card = {};
+      card.id = clickedCard.id;
+      card.title = clickedCard.title;
+      card.kanban_column_id = clickedCard.kanban_column_id;
+      card.description = clickedCard.description;
+      card.columnKey = key;
+      card.cardKey = cardKey;
+      this.card = card;
       this.$modal.show('card-modal');
     },
     updateCard: function updateCard() {
+      var _this5 = this;
+
       if (this.card.title.length < 1) {
         alert("Please enter valid title!");
         return;
@@ -2071,6 +2075,8 @@ __webpack_require__.r(__webpack_exports__);
         description: this.card.description,
         column_id: this.card.kanban_column_id
       }).then(function (response) {
+        _this5.$modal.hide('card-modal');
+
         alert(response.data);
       });
       var columns = this.columns;
@@ -2079,7 +2085,7 @@ __webpack_require__.r(__webpack_exports__);
       this.columns = columns;
     },
     saveCard: function saveCard(columnId, columnkey) {
-      var _this5 = this;
+      var _this6 = this;
 
       if (this.cardName[columnkey].length < 1) {
         alert("Please enter valid title!");
@@ -2090,11 +2096,11 @@ __webpack_require__.r(__webpack_exports__);
         'column_id': columnId,
         title: this.cardName[columnkey]
       }).then(function (response) {
-        _this5.columns[columnkey].cards.push(response.data);
+        _this6.columns[columnkey].cards.push(response.data);
 
-        _this5.$forceUpdate();
+        _this6.$forceUpdate();
 
-        _this5.cardName[columnkey] = "";
+        _this6.cardName[columnkey] = "";
       });
     }
   }
@@ -23794,6 +23800,20 @@ var render = function() {
                         on: { click: _vm.updateCard }
                       },
                       [_vm._v("Update")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass:
+                          "button button--quarter button--mr button--warn",
+                        on: {
+                          click: function($event) {
+                            return _vm.$modal.hide("card-modal")
+                          }
+                        }
+                      },
+                      [_vm._v("Hide")]
                     )
                   ]
                 )
