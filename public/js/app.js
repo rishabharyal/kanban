@@ -1959,6 +1959,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
@@ -2101,6 +2104,23 @@ __webpack_require__.r(__webpack_exports__);
         _this6.$forceUpdate();
 
         _this6.cardName[columnkey] = "";
+      });
+    },
+    downloadDump: function downloadDump() {
+      axios({
+        url: '/download-dump',
+        //your url
+        method: 'GET',
+        responseType: 'blob' // important
+
+      }).then(function (response) {
+        var url = window.URL.createObjectURL(new Blob([response.data]));
+        var link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', 'dump.sql'); //or any other extension
+
+        document.body.appendChild(link);
+        link.click();
       });
     }
   }
@@ -23487,6 +23507,12 @@ var render = function() {
     "div",
     { staticClass: "kanban" },
     [
+      _c(
+        "button",
+        { staticClass: "button--float", on: { click: _vm.downloadDump } },
+        [_vm._v("\n        ⬇️\n    ")]
+      ),
+      _vm._v(" "),
       _c(
         "draggable",
         {

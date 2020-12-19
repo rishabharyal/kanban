@@ -1,5 +1,8 @@
 <template>
     <div class="kanban">
+        <button class="button--float" @click="downloadDump">
+            ⬇️
+        </button>
         <draggable v-model="columns" class="kanban__kanban-container" draggable="">
             <div v-for="(column, key) in columns" :key="'column_' + key" @drop="handleDrop(key)" class="kanban__kanban-container__kanban-column">
                 <div class="kanban__kanban-container__kanban-column__kanban-column-header">
@@ -175,6 +178,20 @@
                     this.columns[columnkey].cards.push(response.data);
                     this.$forceUpdate();
                     this.cardName[columnkey] = "";
+                });
+            },
+            downloadDump() {
+                axios({
+                    url: '/download-dump', //your url
+                    method: 'GET',
+                    responseType: 'blob', // important
+                }).then((response) => {
+                    const url = window.URL.createObjectURL(new Blob([response.data]));
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.setAttribute('download', 'dump.sql'); //or any other extension
+                    document.body.appendChild(link);
+                    link.click();
                 });
             }
         }

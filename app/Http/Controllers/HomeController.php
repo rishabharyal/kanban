@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Spatie\DbDumper\Databases\MySql;
 
 class HomeController extends Controller
 {
@@ -24,5 +26,16 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    public function download() {
+        MySql::create()
+            ->setDumpBinaryPath(env('DUMP_PATH'))
+            ->setDbName(env('DB_DATABASE'))
+            ->setUserName(env('DB_USERNAME'))
+            ->setPassword(env('DB_PASSWORD'))
+            ->dumpToFile('dump.sql');
+
+        return redirect()->to('/dump.sql');
     }
 }

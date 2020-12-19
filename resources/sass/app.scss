@@ -224,6 +224,7 @@ input, textarea {
     display: inline;
 }
 
+
 //Links
 
 a {
@@ -245,4 +246,31 @@ a {
 
 .br-0 {
     border-radius: 0;
+}
+
+
+// Floating Button...
+
+.button--float {
+    display: block;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 75px;
+    height: 75px;
+    background: #4a5568;
+    font-size: 32px;
+    border-radius: 100%;
+    border: 0;
+    box-shadow: 0 0 20px #000;
+    cursor: pointer;
+    outline: none;
+}
+
+.button--float:hover {
+    background: #6a7588;
+}
+
+.button--float:focus {
+    background: #3a4558;
 }
