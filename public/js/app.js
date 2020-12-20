@@ -2046,9 +2046,10 @@ __webpack_require__.r(__webpack_exports__);
         _this3.columnName = "";
       });
     },
-    removeColumn: function removeColumn(id) {
+    removeColumn: function removeColumn(key, id) {
       var _this4 = this;
 
+      this.columns.splice(key, 1);
       axios["delete"]('/api/columns/' + id).then(function () {
         _this4.get();
       });
@@ -23558,7 +23559,7 @@ var render = function() {
                           "kb__kb-container__kb-column__kb-column-header__btn",
                         on: {
                           click: function($event) {
-                            return _vm.removeColumn(column.id)
+                            return _vm.removeColumn(key, column.id)
                           }
                         }
                       },

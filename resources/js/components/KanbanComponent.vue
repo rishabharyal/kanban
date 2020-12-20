@@ -7,7 +7,7 @@
             <div v-for="(column, key) in columns" :key="'column_' + key" @drop="handleDrop(key)" class="kb__kb-container__kb-column">
                 <div class="kb__kb-container__kb-column__kb-column-header">
                     {{ column.title }}
-                    <button class="kb__kb-container__kb-column__kb-column-header__btn" @click="removeColumn(column.id)">❌</button>
+                    <button class="kb__kb-container__kb-column__kb-column-header__btn" @click="removeColumn(key, column.id)">❌</button>
                 </div>
                 <draggable :list="column.cards" @start="dragBegan(key)" :group="{ name: 'row' }" draggable=".card" class="kb__kb-container__kb-column__kb-column-list">
                     <div v-for="(card, cardKey) in column.cards" @dragend="cardDragEnded(card)" :key="'card_' + card.id" @click="showCard(key, cardKey)" class="card" v-text="card.title">Create Data</div>
@@ -131,7 +131,8 @@
                     this.columnName = "";
                 });
             },
-            removeColumn(id) {
+            removeColumn(key, id) {
+                this.columns.splice(key, 1);
                 axios.delete('/api/columns/' + id).then(() => {
                     this.get();
                 });

@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e49c24f6-8d68-4557-b6a4-1b4067b1e233" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/KanbanComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/KanbanComponent.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -175,7 +175,9 @@
       <updated>1608361495694</updated>
       <workItem from="1608361498555" duration="127000" />
       <workItem from="1608361636348" duration="19909000" />
-      <workItem from="1608391213269" duration="51000" />
+      <workItem from="1608391213269" duration="136000" />
+      <workItem from="1608446248222" duration="27000" />
+      <workItem from="1608457939006" duration="85000" />
     </task>
     <servers />
   </component>
